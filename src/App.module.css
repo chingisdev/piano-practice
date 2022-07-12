@@ -1,0 +1,13 @@
+.app {
+    --app-height: 100vh;
+    min-height: var(--app-height);
+}
+
+.content {
+    --offset: calc(var(--footer-height) + var(--logo-height));
+    min-height: calc(var(--app-height) - var(--offset));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
