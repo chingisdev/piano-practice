@@ -1,7 +1,7 @@
 .key {
     position: relative;
     font-size: var(--font-size);
-    border-radius: 0 0 var(--radius) var(--radius);
+    border-radius: 5px 5px var(--radius) var(--radius);
     text-transform: uppercase;
     user-select: none;
 }
@@ -11,46 +11,52 @@
     height: var(--white-key-height);
     padding-top: var(--white-key-padding);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.4);
-    margin-right: -1px;
+    border-radius: 10px;
+    color: var(--dark-purple-color);
+    margin-right: 1px;
     z-index: 1;
+
 }
 
 .sharp,
 .flat {
     width: var(--black-key-width);
-    height: var(--black-key-height);
+    height: calc(var(--black-key-height) - 20px);
     padding-top: var(--black-key-padding);
-    background-color: #111;
-    color: white;
+    background-color: var(--dark-purple-color);
+    color: var(--pink-color);
     margin: 0 calc(-0.5 * calc(var(--black-key-width)));
     z-index: 2;
 }
 
 .natural:active,
 .natural.is-active {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--acid-pink-color)
+}
+
+.activeButton {
+    background-color: var(--acid-pink-color);
 }
 
 .sharp:active,
 .sharp.is-active,
 .flat:active,
 .flat.is-active {
-    background-color: #555;
+    background-color: var(--red-color);
 }
 
 .key:disabled {
-    background-color: none;
+    background-color: white;
     cursor: wait;
 }
 
 .natural:disabled {
     color: rgba(0,0,0,0.2);
-    background-color: white;
+    background-color: var(--pink-color);
 }
 
 .sharp:disabled,
 .flat:disabled {
-    color: rgba(255, 255, 255, 0.4);
-    background-color: #111;
+    color: var(--dark-purple-color);
+    background-color: var(--acid-pink-color);
 }

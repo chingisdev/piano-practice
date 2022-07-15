@@ -9,6 +9,7 @@ type Settings = {
     watchKey: KeyLabel;
     onStartPress: CallbackFunction;
     onFinishPress: CallbackFunction;
+    setIsActive: (value: boolean) => void;
 }
 
 function fromEventCode(code: EventCode): KeyLabel {
@@ -23,7 +24,8 @@ function equal(watchedKey: KeyLabel, eventCode: EventCode): boolean {
 export function usePressObserver({
     watchKey,
     onStartPress,
-    onFinishPress
+    onFinishPress,
+    setIsActive
 }: Settings): IsPressed {
     const [pressed, setPressed] = useState<IsPressed>(false);
 
@@ -31,12 +33,14 @@ export function usePressObserver({
         function handlePressStart({ code }: KeyboardEvent): void {
             if (pressed || !equal(watchKey, code)) return;
             setPressed(true)
+            setIsActive(true);
             onStartPress();
         }
 
         function handlePressFinish({ code }: KeyboardEvent): void {
-            if (pressed || !equal(watchKey, code)) return;
+            if (!pressed || !equal(watchKey, code)) return;
             setPressed(false);
+            setIsActive(false);
             onFinishPress();
         }
 

@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import {FunctionComponent, useState} from "react";
 import clsx from 'clsx';
 import {NotePitch, NoteType} from "../../domain/note";
 import styles from './Key.module.css';
@@ -14,15 +14,18 @@ type KeyProps = {
 }
 
 export const Key: FunctionComponent<KeyProps> = (props) => {
+    const [isActive, setIsActive] = useState(false);
     const {type, label, onDown, onUp, ...rest} = props;
     const pressed = usePressObserver({
         watchKey: label,
         onStartPress: onDown,
-        onFinishPress: onUp
+        onFinishPress: onUp,
+        setIsActive: setIsActive,
     });
+
     return (
         <button
-            className={clsx(styles.key, styles[type], pressed && "is-pressed")}
+            className={clsx(styles.key, styles[type], pressed && "is-active", isActive && styles.activeButton)}
             type="button"
             onMouseDown={onDown}
             onMouseUp={onUp}

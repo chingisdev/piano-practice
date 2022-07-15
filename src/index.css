@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--pink-color);
 }
 
 code {
@@ -25,6 +26,12 @@ code {
   --black-key-width: 2rem;
   --black-key-height: 20rem;
   --black-key-padding: -4px;
+
+  --dark-purple-color: #120458;
+  --medium-purple-color: #7a04eb;
+  --pink-color:#fe75fe;
+  --acid-pink-color: #ff00a0;
+  --red-color: #ff124f;
 }
 
 ::after,
